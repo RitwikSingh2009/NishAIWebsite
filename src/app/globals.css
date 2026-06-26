@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 240 253 244; /* Soft Mint White */
+  --foreground: 15 23 42;    /* Slate 900 / High-Contrast Off-Black */
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: rgb(var(--background));
+  color: rgb(var(--foreground));
+}
+
+/* Smooth selection color matching our theme */
+::selection {
+  background-color: #d1fae5;
+  color: #064e3b;
+}
