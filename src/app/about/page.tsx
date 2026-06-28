@@ -1,51 +1,82 @@
+"use client";
+
 import React from "react";
+import { motion } from "framer-motion";
 
 export default function About() {
   const team = [
-    { name: "Ritwik Singh", role: "Founding Engineer / Architecture" },
-    { name: "Lucas Lu", role: "UI/UX / Systems Architect" },
-    { name: "Hongyi Ren", role: "Security & Neural Logic" }
+    { name: "Ritwik Singh", role: "Architecture / Founder", hex: "bg-purple-300" },
+    { name: "Lucas Lu", role: "Systems Infrastructure", hex: "bg-emerald-300" },
+    { name: "Hongyi Ren", role: "Neural Logic & Security", hex: "bg-amber-300" }
   ];
 
   return (
-    <main className="relative min-h-screen w-full bg-emerald-50/50 pt-32 pb-20 px-6 font-sans">
-      <div className="max-w-4xl mx-auto relative z-10">
+    <main className="min-h-screen w-full px-6 pb-20 overflow-hidden">
+      <div className="max-w-4xl mx-auto space-y-16">
         
-        {/* Manifesto Section */}
-        <section className="mb-24">
-          <h1 className="text-4xl md:text-5xl font-black tracking-tight text-slate-900 mb-6">
-            The Privacy Manifesto
-          </h1>
-          <div className="space-y-6 text-lg text-slate-700 font-medium leading-relaxed">
+        {/* Core Manifesto Box */}
+        <motion.section 
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ type: "spring", stiffness: 100 }}
+          whileHover={{ scale: 1.01 }}
+          className="border-4 border-black bg-white p-8 sm:p-12 brutal-shadow-lg relative"
+        >
+          <motion.h1 
+            initial={{ rotate: -5 }}
+            animate={{ rotate: -1 }}
+            className="text-5xl font-black uppercase tracking-tighter mb-6 bg-yellow-300 inline-block px-3 border-2 border-black"
+          >
+            Our Mission
+          </motion.h1>
+          <div className="space-y-6 text-md font-bold text-zinc-900 leading-relaxed">
             <p>
-              In a tech ecosystem hyper-focused on compiling user behaviors and recording query strings into centralized databases, Nish AI runs backwards. We believe computational scaling shouldn't rely on sacrificing operational security.
+              Nish AI operates with a focus on absolute privacy. We do not compile your queries into central, external data matrices. Technical systems should run securely without constant external telemetry monitoring.
             </p>
             <p>
-              Our core infrastructure processes actions directly inside the application run-state, avoiding intermediate analytical tracking. Your workspace is explicitly your own.
+              Processing computations execute completely within your active ecosystem state. Your specific workflow models remain entirely your proprietary property.
             </p>
           </div>
-        </section>
+        </motion.section>
 
-        {/* Team Section */}
-        <section className="border-t border-emerald-200 pt-16">
-          <h2 className="text-2xl font-black text-slate-900 mb-10 uppercase tracking-widest">
-            Core Operators
-          </h2>
+        {/* Team Grid */}
+        <section className="space-y-8">
+          <motion.h2 
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="text-3xl font-black uppercase tracking-tight bg-white border-2 border-black inline-block px-4 py-1 brutal-shadow"
+          >
+            Our Team
+          </motion.h2>
 
-          <div className="grid sm:grid-cols-3 gap-12">
+          <div className="grid sm:grid-cols-3 gap-6">
             {team.map((member, idx) => (
-              <div key={idx} className="group">
-                <div className="aspect-square rounded-2xl bg-white border border-emerald-100 flex items-center justify-center mb-6 shadow-sm group-hover:border-emerald-400 group-hover:shadow-md transition-all">
-                   <div className="w-12 h-1 bg-emerald-100 group-hover:bg-emerald-400 transition-colors" />
+              <motion.div 
+                key={idx}
+                initial={{ opacity: 0, y: 50, rotate: idx % 2 === 0 ? -3 : 3 }}
+                animate={{ opacity: 1, y: 0, rotate: 0 }}
+                transition={{ delay: idx * 0.1, type: "spring" }}
+                whileHover={{ rotate: idx % 2 === 0 ? 4 : -4, scale: 1.05 }}
+                className="border-4 border-black bg-white p-6 brutal-shadow-interactive cursor-default"
+              >
+                <div className={`aspect-square border-2 border-black ${member.hex} mb-4 flex items-center justify-center shadow-[3px_3px_0px_rgba(0,0,0,1)] overflow-hidden`}>
+                  <motion.div 
+                    animate={{ scale: [1, 1.1, 1] }} 
+                    transition={{ repeat: Infinity, duration: 2, delay: idx * 0.3 }}
+                    className="text-4xl font-black"
+                  >
+                    ⚙️
+                  </motion.div>
                 </div>
-                <h3 className="font-bold text-slate-900 text-lg">{member.name}</h3>
-                <p className="text-xs font-bold text-emerald-600 uppercase tracking-wider mt-1">
+                <h3 className="font-black text-xl uppercase tracking-tighter">{member.name}</h3>
+                <p className="text-xs font-black text-zinc-600 uppercase tracking-widest mt-1">
                   {member.role}
                 </p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </section>
+
       </div>
     </main>
   );

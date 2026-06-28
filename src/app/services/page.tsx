@@ -1,61 +1,78 @@
+"use client";
+
 import React from "react";
+import { motion } from "framer-motion";
 
-interface ServiceItem {
-  id: number;
-  title: string;
-  description: string;
-}
-
-const servicesData: ServiceItem[] = [
+const services = [
   {
-    id: 1,
+    id: "01",
     title: "Context-Aware Autocomplete",
-    description: "AI language processing models calibrated to recognize internal terminology, team acronyms, and specialized project shorthand.",
+    desc: "Language processing models calibrated to recognize internal company terminology, team acronyms, and specialized project shorthand.",
+    color: "bg-cyan-300"
   },
   {
-    id: 2,
+    id: "02",
     title: "Custom LLM Fine-Tuning",
-    description: "Adapt neural network architectures directly to your local workspace databases while maintaining completely isolated security profiles.",
+    desc: "Adapt language model architectures directly to your workspace databases while maintaining completely isolated security profiles.",
+    color: "bg-yellow-300"
   },
   {
-    id: 3,
-    title: "Tailored Workspace Integration",
-    description: "Seamlessly inject autonomous operational tooling into your existing development pipelines and communication channels.",
-  },
+    id: "03",
+    title: "Workspace Integration",
+    desc: "Seamlessly connect intelligent text suggestions directly into your existing development pipelines and communication channels.",
+    color: "bg-rose-300"
+  }
 ];
 
 export default function Services() {
   return (
-    <main className="relative min-h-screen w-full bg-emerald-50/50 pt-32 pb-20 px-6 font-sans">
-      {/* Soft Mint Decorative Glows */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-200/40 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-emerald-100/60 rounded-full blur-[100px] pointer-events-none" />
-
-      <div className="max-w-6xl mx-auto relative z-10">
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-black tracking-tight text-slate-900 mb-4">
-            Our Services
-          </h1>
-          <p className="text-lg text-slate-600 font-medium max-w-2xl mx-auto">
-            Intelligent workflow automation designed specifically to sync with your team's unique operational identity.
+    <main className="min-h-screen w-full px-6 pb-20 overflow-hidden">
+      <div className="max-w-6xl mx-auto space-y-12">
+        
+        {/* Animated Brutalist Header */}
+        <motion.div 
+          initial={{ x: -100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ type: "spring", stiffness: 100 }}
+          className="border-4 border-black bg-white p-8 brutal-shadow max-w-2xl"
+        >
+          <h1 className="text-5xl font-black uppercase tracking-tighter">Our Services</h1>
+          <p className="text-md font-bold text-zinc-700 mt-2">
+            Intelligent workflow automation designed to sync with your team's unique operations.
           </p>
-        </div>
+        </motion.div>
 
+        {/* Cascade Matrix Stagger Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {servicesData.map((service) => (
-            <div
-              key={service.id}
-              className="p-10 rounded-3xl bg-white border border-emerald-100 shadow-sm hover:shadow-xl hover:border-emerald-300 transition-all duration-300 group"
+          {services.map((item, index) => (
+            <motion.div
+              key={item.id}
+              initial={{ opacity: 0, scale: 0.3, y: 50 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ delay: index * 0.15, type: "spring", stiffness: 140, damping: 12 }}
+              whileHover={{ y: -10, scale: 1.02 }}
+              className="border-4 border-black bg-white p-6 brutal-shadow-interactive flex flex-col justify-between items-start group relative"
             >
-              <h3 className="text-xl font-bold text-slate-900 mb-4 group-hover:text-emerald-600 transition-colors">
-                {service.title}
-              </h3>
-              <p className="text-sm text-slate-600 leading-relaxed font-medium">
-                {service.description}
-              </p>
-            </div>
+              <div className="w-full">
+                <motion.div 
+                  whileHover={{ rotate: 360 }}
+                  transition={{ duration: 0.5 }}
+                  className={`text-xl font-black p-2 border-2 border-black inline-block mb-6 shadow-[2px_2px_0px_rgba(0,0,0,1)] cursor-default ${item.color}`}
+                >
+                  {item.id}
+                </motion.div>
+                <h3 className="text-2xl font-black uppercase tracking-tight mb-3 text-black">
+                  {item.title}
+                </h3>
+                <p className="text-sm font-bold text-zinc-800 leading-relaxed">
+                  {item.desc}
+                </p>
+              </div>
+              <div className="h-4 w-full bg-black mt-8 transform group-hover:translate-x-2 transition-transform duration-200" />
+            </motion.div>
           ))}
         </div>
+
       </div>
     </main>
   );

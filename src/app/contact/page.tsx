@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 
 export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -22,55 +23,80 @@ export default function Contact() {
       });
       const data = await response.json();
       if (data.success) {
-        setSuccessMessage("Message sent! We'll reach out shortly.");
+        setSuccessMessage("Message sent successfully! We will get back to you shortly.");
         (e.target as HTMLFormElement).reset();
       } else {
-        setSuccessMessage("Something went wrong. Please try again.");
+        setSuccessMessage("Submission failed. Please try again.");
       }
     } catch (error) {
-      setSuccessMessage("Network error. Please try again later.");
+      setSuccessMessage("Network error. Please check your connection.");
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <main className="relative min-h-screen w-full bg-emerald-50/50 pt-32 pb-20 px-6 font-sans">
-      <div className="max-w-xl mx-auto relative z-10">
+    <main className="min-h-screen w-full px-6 pb-20 overflow-hidden">
+      <div className="max-w-xl mx-auto space-y-8">
         
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-black tracking-tight text-slate-900 mb-3">
-            Contact Us
-          </h1>
-          <p className="text-slate-600 font-medium">
-            Custom project in mind? Drop us a line.
-          </p>
-        </div>
+        <motion.div 
+          initial={{ scale: 0.5, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ type: "spring", stiffness: 120 }}
+          className="border-4 border-black bg-white p-6 brutal-shadow max-w-sm"
+        >
+          <h1 className="text-4xl font-black uppercase tracking-tighter">Contact Us</h1>
+          <p className="text-xs font-bold text-zinc-600 uppercase tracking-widest mt-1">Get in touch with our team</p>
+        </motion.div>
 
-        <form onSubmit={handleSubmit} className="space-y-6 bg-white border border-emerald-100 p-8 rounded-[2rem] shadow-xl">
+        <motion.form 
+          initial={{ opacity: 0, x: 100, rotate: 2 }}
+          animate={{ opacity: 1, x: 0, rotate: 0 }}
+          transition={{ type: "spring", damping: 14 }}
+          onSubmit={handleSubmit} 
+          className="space-y-6 bg-white border-4 border-black p-8 brutal-shadow-lg"
+        >
           <input type="checkbox" name="botcheck" className="hidden" style={{ display: "none" }} />
 
           <div>
-            <label className="block text-xs font-bold uppercase tracking-widest text-slate-700 mb-2">Full Name</label>
-            <input type="text" name="name" required placeholder="Your name" className="w-full px-5 py-3 rounded-2xl bg-slate-50 border border-slate-200 text-slate-900 focus:outline-none focus:border-emerald-500 transition-colors placeholder-slate-400 text-sm" />
+            <label className="block text-sm font-black uppercase tracking-tight mb-2">Full Name</label>
+            <motion.input 
+              whileFocus={{ scale: 1.01 }}
+              type="text" name="name" required placeholder="Your Name" className="w-full px-4 py-3 border-2 border-black rounded-none text-black font-bold focus:outline-none focus:bg-cyan-100 placeholder-zinc-400 text-sm shadow-[2px_2px_0px_rgba(0,0,0,1)] transition-colors" />
           </div>
 
           <div>
-            <label className="block text-xs font-bold uppercase tracking-widest text-slate-700 mb-2">Email</label>
-            <input type="email" name="email" required placeholder="you@company.com" className="w-full px-5 py-3 rounded-2xl bg-slate-50 border border-slate-200 text-slate-900 focus:outline-none focus:border-emerald-500 transition-colors placeholder-slate-400 text-sm" />
+            <label className="block text-sm font-black uppercase tracking-tight mb-2">Email Address</label>
+            <motion.input 
+              whileFocus={{ scale: 1.01 }}
+              type="type" name="email" required placeholder="name@company.com" className="w-full px-4 py-3 border-2 border-black rounded-none text-black font-bold focus:outline-none focus:bg-purple-100 placeholder-zinc-400 text-sm shadow-[2px_2px_0px_rgba(0,0,0,1)] transition-colors" />
           </div>
 
           <div>
-            <label className="block text-xs font-bold uppercase tracking-widest text-slate-700 mb-2">Message</label>
-            <textarea name="message" required rows={4} placeholder="How can we help?" className="w-full px-5 py-3 rounded-2xl bg-slate-50 border border-slate-200 text-slate-900 focus:outline-none focus:border-emerald-500 transition-colors resize-none placeholder-slate-400 text-sm" />
+            <label className="block text-sm font-black uppercase tracking-tight mb-2">Message</label>
+            <motion.textarea 
+              whileFocus={{ scale: 1.01 }}
+              name="message" required rows={4} placeholder="How can we help your team?" className="w-full px-4 py-3 border-2 border-black rounded-none text-black font-bold focus:outline-none focus:bg-lime-100 resize-none placeholder-zinc-400 text-sm shadow-[2px_2px_0px_rgba(0,0,0,1)] transition-colors" />
           </div>
 
-          <button type="submit" disabled={isSubmitting} className="w-full py-4 rounded-2xl bg-emerald-800 hover:bg-emerald-700 disabled:bg-slate-200 text-white font-bold tracking-widest uppercase transition-all shadow-lg active:scale-[0.98] text-sm cursor-pointer">
+          <motion.button 
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+            type="submit" disabled={isSubmitting} className="w-full py-4 bg-rose-300 border-4 border-black font-black uppercase tracking-widest text-sm brutal-shadow-interactive cursor-pointer disabled:bg-zinc-300"
+          >
             {isSubmitting ? "Sending..." : "Submit Message"}
-          </button>
+          </motion.button>
 
-          {successMessage && <p className="text-center text-sm font-bold text-emerald-600 mt-4">{successMessage}</p>}
-        </form>
+          {successMessage && (
+            <motion.p 
+              initial={{ scale: 0.8 }}
+              animate={{ scale: 1 }}
+              className="text-center text-xs font-black uppercase tracking-wider text-purple-600 bg-zinc-100 p-2 border-2 border-black mt-4"
+            >
+              {successMessage}
+            </motion.p>
+          )}
+        </motion.form>
       </div>
     </main>
   );

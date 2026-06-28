@@ -14,36 +14,33 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="min-h-screen antialiased m-0 p-0 font-sans bg-emerald-50/30 text-slate-900">
-        {/* Minty Header Layout */}
-        <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-emerald-100">
+      <body className="min-h-screen antialiased m-0 p-0 bg-zinc-100 text-black selection:bg-cyan-300 selection:text-black">
+        <nav className="fixed top-4 left-4 right-4 z-50 bg-white border-4 border-black brutal-shadow rounded-none">
           <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
             
-            {/* Brand Mark Link & Side Text */}
-            <Link href="/" className="flex items-center gap-3 transition-opacity hover:opacity-80 group">
-              <div className="h-9 w-9 overflow-hidden rounded-md border border-emerald-200 bg-white flex items-center justify-center p-0.5 shadow-sm">
+            {/* Brand Mark Link pointing to public/images/Logo.png */}
+            <Link href="/" className="flex items-center gap-3 group">
+              <div className="h-9 w-9 overflow-hidden border-2 border-black bg-yellow-300 flex items-center justify-center p-0.5 shadow-sm transform group-hover:rotate-6 transition-transform">
                 <img 
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnBWHeiaESzg1aLdQf4GsMAjTp4dpPbuLxQOq1BaypAg&s=10"
+                  src="/images/Logo.png"
                   alt="Nish AI Logo"
                   className="h-full w-full object-contain object-center"
                 />
               </div>
-              <span className="text-base font-bold tracking-tight text-slate-900 group-hover:text-emerald-600 transition-colors">
+              <span className="text-xl font-black uppercase tracking-tighter text-black">
                 Nish AI
               </span>
             </Link>
             
-            {/* Navigation Channels */}
-            <div className="flex items-center gap-8 text-sm font-semibold text-slate-700 tracking-wide">
-              <Link href="/about" className="hover:text-emerald-600 transition-colors">About</Link>
-              <Link href="/services" className="hover:text-emerald-600 transition-colors">Services</Link>
-              <Link href="/contact" className="hover:text-emerald-600 transition-colors">Contact</Link>
+            <div className="flex items-center gap-6 text-sm font-black uppercase tracking-tight">
+              <Link href="/about" className="hover:bg-cyan-300 px-3 py-1.5 border-2 border-transparent hover:border-black transition-all">About</Link>
+              <Link href="/services" className="hover:bg-lime-300 px-3 py-1.5 border-2 border-transparent hover:border-black transition-all">Services</Link>
+              <Link href="/contact" className="hover:bg-rose-300 px-3 py-1.5 border-2 border-transparent hover:border-black transition-all">Contact</Link>
             </div>
           </div>
         </nav>
 
-        {/* Application Frame */}
-        <div className="w-full">
+        <div className="w-full pt-28">
           {children}
         </div>
       </body>
