@@ -8,7 +8,7 @@ export default function Home() {
     <main className="min-h-[calc(100vh-7rem)] w-full flex items-center justify-center px-6 pb-12 overflow-hidden">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full">
         
-        {/* Left Side: Heavy Animated Copy */}
+        {/* Left Side: Heavy Animated Copy (Expanded for a natural shift) */}
         <div className="lg:col-span-7 space-y-6 flex flex-col items-start order-2 lg:order-1">
           <motion.div 
             animate={{ scale: [1, 1.05, 1] }}
@@ -58,33 +58,33 @@ export default function Home() {
           </motion.div>
         </div>
 
-        {/* Right Side: High-Velocity Animated Image Frame */}
+        {/* Right Side: Widescreen Framed Image Box (Shifted to the right) */}
         <motion.div 
-          initial={{ y: 100, opacity: 0, rotate: 5 }}
+          initial={{ y: 100, opacity: 0, rotate: 3 }}
           animate={{ y: 0, opacity: 1, rotate: 0 }}
           transition={{ type: "spring", stiffness: 80, delay: 0.2 }}
           whileHover={{ scale: 1.02, rotate: -1 }}
-          className="lg:col-span-5 bg-white border-4 border-black brutal-shadow-lg p-6 relative group order-1 lg:order-2 aspect-[16/9] lg:aspect-square flex items-center justify-center overflow-hidden"
+          className="lg:col-span-5 bg-white border-4 border-black brutal-shadow-lg relative group order-1 lg:order-2 aspect-[16/9] w-full flex items-center justify-center overflow-hidden"
         >
           {/* Animated Background Pulse */}
           <motion.div 
             animate={{ opacity: [0.03, 0.08, 0.03] }}
             transition={{ repeat: Infinity, duration: 3 }}
-            className="absolute inset-0 bg-[linear-gradient(to_right,#000_1px,transparent_1px),linear-gradient(to_bottom,#000_1px,transparent_1px)] bg-[size:20px_20px]" 
+            className="absolute inset-0 bg-[linear-gradient(to_right,#000_1px,transparent_1px),linear-gradient(to_bottom,#000_1px,transparent_1px)] bg-[size:20px_20px] z-0" 
           />
           
           <motion.img 
             animate={{ 
-              y: [0, -10, 0],
+              y: [0, -6, 0],
             }}
             transition={{
               repeat: Infinity,
               duration: 4,
               ease: "easeInOut"
             }}
-            src="/images/AdobeExpressPhotos_13c2645df72b4e8bb1d49e416ca5377d_CopyEdited.jpg"
+            src="/images/Nish Digital Lion.png"
             alt="Nish AI Digital Lion"
-            className="w-full h-full object-contain z-10 relative"
+            className="w-full h-full object-cover z-10 relative"
           />
         </motion.div>
 
