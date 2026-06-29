@@ -5,8 +5,8 @@ import { motion } from "framer-motion";
 
 export default function About() {
   const team = [
+    { name: "Lucas Lu", role: "Systems Infrastructure / Founder", hex: "bg-emerald-300" },
     { name: "Ritwik Singh", role: "Architecture / Founder", hex: "bg-purple-300" },
-    { name: "Lucas Lu", role: "Systems Infrastructure", hex: "bg-emerald-300" },
     { name: "Hongyi Ren", role: "Neural Logic & Security", hex: "bg-amber-300" }
   ];
 
