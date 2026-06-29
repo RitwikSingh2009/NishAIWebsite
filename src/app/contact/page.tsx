@@ -56,7 +56,8 @@ export default function Contact() {
           onSubmit={handleSubmit} 
           className="space-y-6 bg-white border-4 border-black p-8 brutal-shadow-lg"
         >
-          <input type="checkbox" name="botcheck" className="hidden" style={{ display: "none" }} />
+          {/* Honeypot Spam Protection */}
+          <input type="checkbox" name="botcheck" className="hidden" />
 
           <div>
             <label className="block text-sm font-black uppercase tracking-tight mb-2">Full Name</label>
@@ -69,7 +70,7 @@ export default function Contact() {
             <label className="block text-sm font-black uppercase tracking-tight mb-2">Email Address</label>
             <motion.input 
               whileFocus={{ scale: 1.01 }}
-              type="type" name="email" required placeholder="name@company.com" className="w-full px-4 py-3 border-2 border-black rounded-none text-black font-bold focus:outline-none focus:bg-purple-100 placeholder-zinc-400 text-sm shadow-[2px_2px_0px_rgba(0,0,0,1)] transition-colors" />
+              type="email" name="email" required placeholder="name@company.com" className="w-full px-4 py-3 border-2 border-black rounded-none text-black font-bold focus:outline-none focus:bg-purple-100 placeholder-zinc-400 text-sm shadow-[2px_2px_0px_rgba(0,0,0,1)] transition-colors" />
           </div>
 
           <div>
