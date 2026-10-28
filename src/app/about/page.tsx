@@ -5,11 +5,13 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export default function About() {
   const [hoveredMember, setHoveredMember] = useState<string | null>(null);
+  const [missingPhotos, setMissingPhotos] = useState<string[]>([]);
 
   const team = [
-    { id: "ritwik", name: "Ritwik Singh", role: "Architecture / Founder", src: "/images/Ritwik.jpg" },
-    { id: "lucas", name: "Lucas Lu", role: "Systems Infrastructure", src: "/images/Lucas.jpeg" },
-    { id: "rain", name: "Hongyi (Rain) Ren", role: "Neural Logic & Security", src: "/images/Rain.jpeg" }
+    { id: "lucas", name: "Lucas Lu", role: "CEO", src: "/images/Lucas.jpeg" },
+    { id: "ritwik", name: "Ritwik Singh", role: "CTO", src: "/images/Ritwik.jpg" },
+    { id: "rain", name: "Hongyi (Rain) Ren", role: "CMO", src: "/images/Rain.jpeg" },
+    { id: "allen", name: "Allen Hwang", role: "Principal Engineer", src: "/images/Allen.png" }
   ];
 
   return (
@@ -51,7 +53,7 @@ export default function About() {
             Our Team
           </motion.h2>
 
-          <div className="grid sm:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 gap-6">
             {team.map((member, idx) => (
               <motion.div 
                 key={member.id}
@@ -65,11 +67,18 @@ export default function About() {
               >
                 {/* Image Container frame */}
                 <div className="aspect-square border-2 border-black bg-zinc-200 mb-4 flex items-center justify-center shadow-[3px_3px_0px_rgba(0,0,0,1)] overflow-hidden relative">
-                  <img 
-                    src={member.src}
-                    alt={member.name}
-                    className="w-full h-full object-cover"
-                  />
+                  {missingPhotos.includes(member.id) ? (
+                    <span role="img" aria-label={`${member.name} portrait placeholder`} className="text-6xl font-black text-zinc-500">
+                      {member.name.split(" ").map((part) => part[0]).join("")}
+                    </span>
+                  ) : (
+                    <img
+                      src={member.src}
+                      alt={member.name}
+                      className="w-full h-full object-cover"
+                      onError={() => setMissingPhotos((ids) => [...ids, member.id])}
+                    />
+                  )}
 
                   {/* 1. Ritwik: Speech bubble pop-up overlay */}
                   <AnimatePresence>
@@ -139,7 +148,7 @@ export default function About() {
 
                 <h3 className="font-black text-xl uppercase tracking-tighter text-black">{member.name}</h3>
                 <p className="text-xs font-black text-zinc-600 uppercase tracking-widest mt-1">
-                  {member.role}
+                  Co-founder &amp; {member.role}
                 </p>
               </motion.div>
             ))}
