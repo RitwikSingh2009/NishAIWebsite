@@ -1,89 +1,32 @@
-"use client";
-
-import Link from "next/link";
-import { motion } from "framer-motion";
+import { WaitlistForm } from "@/components/waitlist-form";
 
 export default function Home() {
   return (
-    <main className="min-h-[calc(100vh-7rem)] w-full flex items-center justify-center px-6 pb-12 overflow-hidden">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full">
-        
-        {/* Left Side: Heavy Animated Copy */}
-        <div className="lg:col-span-7 space-y-6 flex flex-col items-start order-2 lg:order-1">
-          <motion.div 
-            animate={{ scale: [1, 1.05, 1] }}
-            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-            className="bg-purple-400 text-black text-xs font-black uppercase tracking-widest px-4 py-1.5 border-2 border-black brutal-shadow select-none"
-          >
-            Nish AI LLC
-          </motion.div>
-
-          <div className="space-y-2 max-w-full">
-            <motion.h1 
-              initial={{ y: 100, rotate: -5, opacity: 0 }}
-              animate={{ y: 0, rotate: 0, opacity: 1 }}
-              transition={{ type: "spring", damping: 12, stiffness: 100 }}
-              className="text-4xl sm:text-6xl md:text-7xl font-black uppercase tracking-tighter leading-none text-black text-left"
-            >
-              Intelligent <br />
-              <motion.span 
-                whileHover={{ scale: 1.02, y: -4 }}
-                className="bg-cyan-300 px-3 py-1.5 inline-block border-4 border-black brutal-shadow mt-4 transform origin-center cursor-default max-w-full whitespace-nowrap text-3xl sm:text-5xl md:text-6xl lg:text-7xl"
-              >
-                Autocomplete
-              </motion.span>
-            </motion.h1>
+    <main className="mx-auto max-w-7xl px-6 pb-12 pt-6 md:pt-12">
+      <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+        <section>
+          <p className="mb-7 inline-block border-2 border-black bg-purple-300 px-4 py-2 text-xs font-black uppercase tracking-widest brutal-shadow">● Pre-launch · Join the waitlist</p>
+          <h1 className="text-5xl font-black uppercase leading-[1.02] tracking-tighter sm:text-7xl">Less typing.<br />More <span className="mt-3 inline-block border-4 border-black bg-cyan-300 px-3 pb-2 brutal-shadow">thinking.</span></h1>
+          <p className="mb-8 mt-8 max-w-lg text-lg font-medium leading-relaxed text-zinc-700">Autocomplete that speaks your team’s language. Nish AI is building intelligent writing tools around your terminology, your workflows, and your context.</p>
+          <WaitlistForm />
+        </section>
+        <section aria-label="Illustration of Nish AI autocomplete" className="relative pb-5 lg:pl-4">
+          <div className="border-4 border-black bg-white brutal-shadow-lg">
+            <div className="flex items-center justify-between border-b-4 border-black bg-yellow-200 px-5 py-4"><span className="text-xs font-black uppercase tracking-widest">Your words. A head start.</span><span aria-hidden="true">● ● ○</span></div>
+            <div className="p-6 sm:p-9">
+              <p className="mb-8 font-mono text-xs uppercase tracking-widest text-zinc-500">A little less blank-page energy</p>
+              <p className="text-2xl font-bold leading-relaxed sm:text-3xl">Let’s bring the team up to speed<span className="bg-cyan-100 text-zinc-500"> on the launch plan and next steps.</span><span aria-hidden="true">▏</span></p>
+              <div className="mt-8 flex items-center gap-3 text-xs font-bold text-zinc-500"><kbd className="border-2 border-black px-2 py-1 text-black">Tab ↵</kbd> An idea of what’s coming</div>
+            </div>
+            <div className="flex items-center gap-4 border-t-4 border-black bg-zinc-100 p-5"><img src="/images/Logo.png" alt="" className="h-12 w-12 border-2 border-black bg-yellow-300 object-contain p-1" /><div><p className="font-black">Built for your kind of work.</p><p className="text-sm text-zinc-600">Context makes all the difference.</p></div></div>
           </div>
-
-          <motion.p 
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.3, type: "spring" }}
-            className="text-lg font-bold text-zinc-800 tracking-tight max-w-xl bg-white p-4 border-2 border-black brutal-shadow"
-          >
-            Custom language processing models tailored to recognize internal company terminology, workflows, and specialized team context. Completely secure, private, and self-contained.
-          </motion.p>
-
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
-          >
-            <Link 
-              href="/services" 
-              className="px-8 py-5 bg-lime-300 text-black border-4 border-black font-black uppercase tracking-wider text-sm brutal-shadow-interactive block cursor-pointer"
-            >
-              Our Services
-            </Link>
-          </motion.div>
-        </div>
-
-        {/* Right Side: Widescreen Framed Image Box */}
-        <motion.div 
-          initial={{ y: 100, opacity: 0, rotate: 3 }}
-          animate={{ y: 0, opacity: 1, rotate: 0 }}
-          transition={{ type: "spring", stiffness: 80, delay: 0.2 }}
-          whileHover={{ scale: 1.02, rotate: -1 }}
-          className="lg:col-span-5 bg-white border-4 border-black brutal-shadow-lg relative group order-1 lg:order-2 aspect-[16/9] w-full flex items-center justify-center overflow-hidden"
-        >
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#000_1px,transparent_1px),linear-gradient(to_bottom,#000_1px,transparent_1px)] bg-[size:20px_20px] opacity-5 z-0" />
-          
-          <motion.img 
-            animate={{ 
-              y: [0, -6, 0],
-            }}
-            transition={{
-              repeat: Infinity,
-              duration: 4,
-              ease: "easeInOut"
-            }}
-            src="/images/Nish Digital Lion.png"
-            alt="Nish AI Digital Lion"
-            className="w-full h-full object-cover z-10 relative"
-          />
-        </motion.div>
-
+          <span className="absolute -bottom-1 right-3 rotate-[-4deg] border-2 border-black bg-lime-300 px-5 py-3 text-sm font-black uppercase brutal-shadow">Big ideas. Fewer keystrokes.</span>
+        </section>
       </div>
+      <section aria-label="What we’re building" className="mt-20 grid gap-6 border-t-4 border-black pt-8 md:grid-cols-3">
+        {[["01", "Your team’s vocabulary", "Suggestions shaped around the language your team actually uses."], ["02", "Context that clicks", "Designed for specialized workflows, beyond generic autocomplete."], ["03", "Privacy by design", "Built with private, self-contained company deployments in mind."]].map(([number, title, copy]) => <div key={number}><span className="font-mono text-xs font-bold text-zinc-500">{number} /</span><h2 className="mb-2 mt-2 text-lg font-black">{title}</h2><p className="max-w-sm text-sm leading-relaxed text-zinc-600">{copy}</p></div>)}
+      </section>
+      <footer className="mt-12 flex flex-wrap justify-between gap-3 text-xs font-bold text-zinc-500"><span>© Nish AI LLC</span><span>A little context goes a long way.</span></footer>
     </main>
   );
 }
