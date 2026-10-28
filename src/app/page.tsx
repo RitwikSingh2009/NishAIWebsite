@@ -1,4 +1,5 @@
 import { WaitlistForm } from "@/components/waitlist-form";
+import logo from "../../public/images/Logo.png";
 
 export default function Home() {
   return (
@@ -18,7 +19,7 @@ export default function Home() {
               <p className="text-2xl font-bold leading-relaxed sm:text-3xl">Let’s bring the team up to speed<span className="bg-cyan-100 text-zinc-500"> on the launch plan and next steps.</span><span aria-hidden="true">▏</span></p>
               <div className="mt-8 flex items-center gap-3 text-xs font-bold text-zinc-500"><kbd className="border-2 border-black px-2 py-1 text-black">Tab ↵</kbd> An idea of what’s coming</div>
             </div>
-            <div className="flex items-center gap-4 border-t-4 border-black bg-zinc-100 p-5"><img src="/images/Logo.png" alt="" className="h-12 w-12 border-2 border-black bg-yellow-300 object-contain p-1" /><div><p className="font-black">Built for your kind of work.</p><p className="text-sm text-zinc-600">Context makes all the difference.</p></div></div>
+            <div className="flex items-center gap-4 border-t-4 border-black bg-zinc-100 p-5"><div className="brand-logo h-16 w-16"><img src={logo.src} alt="" className="brand-logo-image" /></div><div><p className="font-black">Built for your kind of work.</p><p className="text-sm text-zinc-600">Context makes all the difference.</p></div></div>
           </div>
           <span className="absolute -bottom-1 right-3 rotate-[-4deg] border-2 border-black bg-lime-300 px-5 py-3 text-sm font-black uppercase brutal-shadow">Big ideas. Fewer keystrokes.</span>
         </section>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import logo from "../../public/images/Logo.png";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -18,13 +19,12 @@ export default function RootLayout({
         <nav className="fixed top-4 left-4 right-4 z-50 bg-white border-4 border-black brutal-shadow rounded-none">
           <div className="max-w-7xl mx-auto px-3 sm:px-6 h-16 flex items-center justify-between">
             
-            {/* Brand Mark Link pointing to public/images/Logo.png */}
             <Link href="/" className="flex items-center gap-3 group">
-              <div className="h-9 w-9 overflow-hidden border-2 border-black bg-yellow-300 flex items-center justify-center p-0.5 shadow-sm transform group-hover:rotate-6 transition-transform">
+              <div className="brand-logo h-14 w-14 shadow-sm transform group-hover:rotate-6 transition-transform">
                 <img 
-                  src="/images/Logo.png"
+                  src={logo.src}
                   alt="Nish AI Logo"
-                  className="h-full w-full object-contain object-center"
+                  className="brand-logo-image"
                 />
               </div>
               <span className="text-xl font-black uppercase tracking-tighter text-black">

@@ -39,3 +39,18 @@ html, body {
   transform: translate(4px, 4px);
   box-shadow: 2px 2px 0px 0px #000000;
 }
+
+/* Zoom into the mark to exclude the source image's wide white margins. */
+.brand-logo {
+  flex-shrink: 0;
+  overflow: hidden;
+  background: white;
+}
+
+.brand-logo-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform: scale(1.8) translateY(2%);
+}
