@@ -126,6 +126,36 @@ export default function About() {
                     )}
                   </AnimatePresence>
 
+                  {/* Allen: Bouncing pig overlay */}
+                  <AnimatePresence>
+                    {hoveredMember === "allen" && member.id === "allen" && (
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="absolute inset-0 bg-pink-300/80 flex flex-col items-center justify-center gap-4 pointer-events-none z-20"
+                      >
+                        <motion.span
+                          role="img"
+                          aria-label="Bouncing pig"
+                          animate={{ y: [0, -24, 0], rotate: [-8, 8, -8], scale: [1, 1.12, 1] }}
+                          transition={{ duration: 0.9, repeat: Infinity, ease: "easeInOut" }}
+                          className="text-7xl select-none"
+                        >
+                          🐷
+                        </motion.span>
+                        <motion.span
+                          initial={{ scale: 0 }}
+                          animate={{ scale: 1 }}
+                          transition={{ delay: 0.15, type: "spring", stiffness: 300 }}
+                          className="border-2 border-black bg-white px-4 py-2 text-xl font-black uppercase brutal-shadow"
+                        >
+                          Oink oink!
+                        </motion.span>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+
                   {/* 3. Rain: Particle Rain drop falling effect overlay */}
                   {hoveredMember === "rain" && member.id === "rain" && (
                     <div className="absolute inset-0 bg-blue-900/40 pointer-events-none z-20 flex justify-around overflow-hidden">
