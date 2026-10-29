@@ -12,7 +12,7 @@ export default function Home() {
             <span className="block">writing</span>
             <span className="mt-3 block text-[0.82em] leading-tight tracking-[-0.025em]"><em className="decoration-[#A3C6F0] decoration-[0.06em] underline underline-offset-[0.12em]">wherever</em> you type.</span>
           </h1>
-          <p className="mb-8 mt-8 max-w-lg text-lg font-medium leading-relaxed text-zinc-700">Nish is a personalized writing engine built into your desktop apps. It learns your voice, vocabulary, and typing style, then helps autocomplete your thoughts as you write.</p>
+          <p className="mb-8 mt-8 max-w-lg text-lg font-medium leading-relaxed text-zinc-700">Nish is a writing engine tailored to you, built right into your desktop apps. It learns your voice, vocabulary, and typing style, then helps autocomplete your thoughts as you write.</p>
           <WaitlistForm />
         </section>
         <section aria-label="Illustration of Nish AI autocomplete" className="relative pb-5 lg:pl-4">
@@ -23,7 +23,7 @@ export default function Home() {
               <p className="text-2xl font-bold leading-relaxed sm:text-3xl">Let’s bring the team up to speed<span className="bg-[#E1E9FA] text-zinc-500"> on the launch plan and next steps.</span><span aria-hidden="true">▏</span></p>
               <div className="mt-8 flex items-center gap-3 text-xs font-bold text-zinc-500"><kbd className="border-2 border-black px-2 py-1 text-black">Tab ↵</kbd> An idea of what’s coming</div>
             </div>
-            <div className="flex items-center gap-4 border-t-4 border-black bg-zinc-100 p-5"><div className="brand-logo h-16 w-16"><img src={logo.src} alt="" className="brand-logo-image" /></div><div><p className="font-black">Nish AI</p><p className="text-sm text-zinc-600">Personalized writing</p></div></div>
+            <div className="flex items-center gap-4 border-t-4 border-black bg-zinc-100 p-5"><div className="brand-logo h-16 w-16 !bg-transparent"><img src={logo.src} alt="" className="brand-logo-image mix-blend-multiply" /></div><div><p className="text-lg leading-tight"><span className="font-black">Nish AI</span><span className="mx-2 text-zinc-400">—</span><span className="font-display italic text-zinc-700">What does that even mean?</span></p><p className="mt-1 text-sm text-zinc-600">Built for your kind of work. Context makes all the difference.</p></div></div>
           </div>
         </section>
       </div>
