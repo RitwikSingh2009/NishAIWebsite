@@ -8,19 +8,19 @@ const services = [
     id: "01",
     title: "Context-Aware Autocomplete",
     desc: "Language processing models calibrated to recognize internal company terminology, team acronyms, and specialized project shorthand.",
-    color: "bg-cyan-300"
+    color: "bg-[#A3C6F0]"
   },
   {
     id: "02",
     title: "Custom LLM Fine-Tuning",
     desc: "Adapt language model architectures directly to your workspace databases while maintaining completely isolated security profiles.",
-    color: "bg-yellow-300"
+    color: "bg-[#FFDA7B]"
   },
   {
     id: "03",
     title: "Workspace Integration",
     desc: "Seamlessly connect intelligent text suggestions directly into your existing development pipelines and communication channels.",
-    color: "bg-rose-300"
+    color: "bg-[#EAB1CF]"
   }
 ];
 
@@ -36,7 +36,7 @@ export default function Services() {
           transition={{ type: "spring", stiffness: 100 }}
           className="border-4 border-black bg-white p-8 brutal-shadow max-w-2xl"
         >
-          <h1 className="text-5xl font-black uppercase tracking-tighter">Our Services</h1>
+          <h1 className="font-display text-5xl font-medium uppercase tracking-tighter">Our Services</h1>
           <p className="text-md font-bold text-zinc-700 mt-2">
             Intelligent workflow automation designed to sync with your team's unique operations.
           </p>

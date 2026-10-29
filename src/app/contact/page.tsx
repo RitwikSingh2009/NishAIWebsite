@@ -45,7 +45,7 @@ export default function Contact() {
           transition={{ type: "spring", stiffness: 120 }}
           className="border-4 border-black bg-white p-6 brutal-shadow max-w-sm"
         >
-          <h1 className="text-4xl font-black uppercase tracking-tighter">Contact Us</h1>
+          <h1 className="font-display text-4xl font-medium uppercase tracking-tighter">Contact Us</h1>
           <p className="text-xs font-bold text-zinc-600 uppercase tracking-widest mt-1">Get in touch with our team</p>
         </motion.div>
 
@@ -63,27 +63,27 @@ export default function Contact() {
             <label className="block text-sm font-black uppercase tracking-tight mb-2">Full Name</label>
             <motion.input 
               whileFocus={{ scale: 1.01 }}
-              type="text" name="name" required placeholder="Your Name" className="w-full px-4 py-3 border-2 border-black rounded-none text-black font-bold focus:outline-none focus:bg-cyan-100 placeholder-zinc-400 text-sm shadow-[2px_2px_0px_rgba(0,0,0,1)] transition-colors" />
+              type="text" name="name" required placeholder="Your Name" className="w-full px-4 py-3 border-2 border-black rounded-none text-black font-bold focus:outline-none focus:bg-[#E1E9FA] placeholder-zinc-400 text-sm shadow-[2px_2px_0px_rgba(0,0,0,1)] transition-colors" />
           </div>
 
           <div>
             <label className="block text-sm font-black uppercase tracking-tight mb-2">Email Address</label>
             <motion.input 
               whileFocus={{ scale: 1.01 }}
-              type="email" name="email" required placeholder="name@company.com" className="w-full px-4 py-3 border-2 border-black rounded-none text-black font-bold focus:outline-none focus:bg-purple-100 placeholder-zinc-400 text-sm shadow-[2px_2px_0px_rgba(0,0,0,1)] transition-colors" />
+              type="email" name="email" required placeholder="name@company.com" className="w-full px-4 py-3 border-2 border-black rounded-none text-black font-bold focus:outline-none focus:bg-[#F0E5FA] placeholder-zinc-400 text-sm shadow-[2px_2px_0px_rgba(0,0,0,1)] transition-colors" />
           </div>
 
           <div>
             <label className="block text-sm font-black uppercase tracking-tight mb-2">Message</label>
             <motion.textarea 
               whileFocus={{ scale: 1.01 }}
-              name="message" required rows={4} placeholder="How can we help your team?" className="w-full px-4 py-3 border-2 border-black rounded-none text-black font-bold focus:outline-none focus:bg-lime-100 resize-none placeholder-zinc-400 text-sm shadow-[2px_2px_0px_rgba(0,0,0,1)] transition-colors" />
+              name="message" required rows={4} placeholder="How can we help your team?" className="w-full px-4 py-3 border-2 border-black rounded-none text-black font-bold focus:outline-none focus:bg-[#EFF5D9] resize-none placeholder-zinc-400 text-sm shadow-[2px_2px_0px_rgba(0,0,0,1)] transition-colors" />
           </div>
 
           <motion.button 
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
-            type="submit" disabled={isSubmitting} className="w-full py-4 bg-rose-300 border-4 border-black font-black uppercase tracking-widest text-sm brutal-shadow-interactive cursor-pointer disabled:bg-zinc-300"
+            type="submit" disabled={isSubmitting} className="w-full py-4 bg-[#EAB1CF] border-4 border-black font-black uppercase tracking-widest text-sm brutal-shadow-interactive cursor-pointer disabled:bg-zinc-300"
           >
             {isSubmitting ? "Sending..." : "Submit Message"}
           </motion.button>
@@ -92,7 +92,7 @@ export default function Contact() {
             <motion.p 
               initial={{ scale: 0.8 }}
               animate={{ scale: 1 }}
-              className="text-center text-xs font-black uppercase tracking-wider text-purple-600 bg-zinc-100 p-2 border-2 border-black mt-4"
+              className="text-center text-xs font-black uppercase tracking-wider text-[#8646BE] bg-zinc-100 p-2 border-2 border-black mt-4"
             >
               {successMessage}
             </motion.p>

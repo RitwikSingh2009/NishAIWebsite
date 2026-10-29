@@ -11,7 +11,7 @@ export default function About() {
     { id: "lucas", name: "Lucas Lu", role: "CEO", src: "/images/Lucas.jpeg" },
     { id: "ritwik", name: "Ritwik Singh", role: "CTO", src: "/images/Ritwik.jpg" },
     { id: "rain", name: "Hongyi (Rain) Ren", role: "CMO", src: "/images/Rain.jpeg" },
-    { id: "allen", name: "Allen Hwang", role: "Principal Engineer", src: "/images/Allen.png" }
+    { id: "allen", name: "Allen B. Hwang", role: "Principal Engineer", src: "/images/Allen.png" }
   ];
 
   return (
@@ -29,16 +29,16 @@ export default function About() {
           <motion.h1 
             initial={{ rotate: -5 }}
             animate={{ rotate: -1 }}
-            className="text-5xl font-black uppercase tracking-tighter mb-6 bg-yellow-300 inline-block px-3 border-2 border-black"
+            className="font-display text-5xl font-medium uppercase tracking-tighter mb-6 bg-[#FFDA7B] inline-block px-3 border-2 border-black"
           >
             Our Mission
           </motion.h1>
           <div className="space-y-6 text-md font-bold text-zinc-900 leading-relaxed">
             <p>
-              Nish AI operates with a focus on absolute privacy. We do not compile your queries into central, external data matrices. Technical systems should run securely without constant external telemetry monitoring.
+              Nish AI operates with a focus on absolute privacy. We do not sell your data or compile your queries into central, external data matrices. Technical systems should run securely without constant external telemetry monitoring.
             </p>
             <p>
-              Processing computations execute completely within your active ecosystem state. Your specific workflow models remain entirely your proprietary property.
+              To generate suggestions, some processing may be handled by trusted third-party AI providers. Your specific workflow and writing remain your property, and we do not claim ownership of them.
             </p>
           </div>
         </motion.section>
@@ -88,7 +88,7 @@ export default function About() {
                         animate={{ scale: 1, y: 0 }}
                         exit={{ scale: 0 }}
                         transition={{ type: "spring", stiffness: 300, damping: 15 }}
-                        className="absolute bottom-4 left-4 right-4 bg-lime-300 border-2 border-black p-2 text-center text-xs font-black uppercase tracking-wider shadow-[2px_2px_0px_rgba(0,0,0,1)] text-black z-20"
+                        className="absolute bottom-4 left-4 right-4 bg-[#CEE58B] border-2 border-black p-2 text-center text-xs font-black uppercase tracking-wider shadow-[2px_2px_0px_rgba(0,0,0,1)] text-black z-20"
                       >
                         Baaaa! 🐑
                       </motion.div>
@@ -102,7 +102,7 @@ export default function About() {
                         initial={{ opacity: 0, scale: 0.5 }}
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0 }}
-                        className="absolute inset-0 bg-yellow-400/80 flex flex-col items-center justify-center z-20"
+                        className="absolute inset-0 bg-[#F8C14F]/80 flex flex-col items-center justify-center z-20"
                       >
                         <motion.span 
                           animate={{ 
@@ -133,7 +133,7 @@ export default function About() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="absolute inset-0 bg-pink-300/80 flex flex-col items-center justify-center gap-4 pointer-events-none z-20"
+                        className="absolute inset-0 bg-[#E9B1DA]/80 flex flex-col items-center justify-center gap-4 pointer-events-none z-20"
                       >
                         <motion.span
                           role="img"
@@ -158,7 +158,7 @@ export default function About() {
 
                   {/* 3. Rain: Particle Rain drop falling effect overlay */}
                   {hoveredMember === "rain" && member.id === "rain" && (
-                    <div className="absolute inset-0 bg-blue-900/40 pointer-events-none z-20 flex justify-around overflow-hidden">
+                    <div className="absolute inset-0 bg-[#383879]/40 pointer-events-none z-20 flex justify-around overflow-hidden">
                       {[...Array(6)].map((_, i) => (
                         <motion.div 
                           key={i}
@@ -169,7 +169,7 @@ export default function About() {
                             delay: Math.random() * 0.3,
                             ease: "linear" 
                           }}
-                          className="w-0.5 h-6 bg-cyan-300 rounded"
+                          className="w-0.5 h-6 bg-[#A3C6F0] rounded"
                         />
                       ))}
                     </div>
