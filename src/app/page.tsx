@@ -10,11 +10,18 @@ export default function Home() {
         Writing agent{" "}
         <span className="font-display font-normal italic text-purple-500">personalized to you</span>
       </h1>
-      <img
-        src="/images/nish%20ai%20hero.JPG"
-        alt="Crystal ball on a rock by the water"
-        className="mx-auto mt-12 h-[80vh] w-[calc(100%-1.5rem)] rounded-2xl object-cover object-[center_45%] sm:mt-16"
-      />
+      <div className="relative mx-auto mt-12 w-[calc(100%-1.5rem)] overflow-hidden rounded-2xl sm:mt-16">
+        <img
+          src="/images/nish%20ai%20hero.JPG"
+          alt="Crystal ball on a rock by the water"
+          className="h-[80vh] w-full object-cover object-[center_45%]"
+        />
+        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/50 to-transparent px-6 pb-8 pt-24 text-left sm:px-12 sm:pb-12">
+          <p className="text-4xl font-semibold tracking-tight text-white sm:text-6xl">
+            Think it? <span className="font-display font-normal italic">Already written.</span>
+          </p>
+        </div>
+      </div>
       <div className="relative isolate overflow-hidden">
         <PhosphorVideo />
         <section className="mx-auto grid max-w-6xl items-center gap-12 px-4 py-24 text-left sm:px-6 sm:py-32 lg:grid-cols-2 lg:gap-16">

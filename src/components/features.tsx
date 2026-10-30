@@ -2,6 +2,7 @@
 import { FactCard, TypingText, appCard, appPanel, factGreen } from "@/components/app-ui";
 import { useEffect, useRef, useState } from "react";
 import { useDemoLoop } from "@/components/demo-loop";
+import { RibbonBackground } from "@/components/ribbon-background";
 
 type GraphicProps = { active?: boolean };
 
@@ -42,7 +43,8 @@ export function Features() {
   }, []);
 
   return (
-    <section className="bg-[#F1EEF9] px-4 py-24 text-left sm:px-6 sm:py-32">
+    <section className="relative isolate bg-[#F1EEF9] px-4 py-24 text-left sm:px-6 sm:py-32">
+      <RibbonBackground rows={rows} />
       <div className="mx-auto max-w-6xl">
         {features.map(({ title, body, Graphic }, i) => {
           const shown = active === i;
