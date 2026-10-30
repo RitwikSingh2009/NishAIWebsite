@@ -5,52 +5,47 @@ import logo from "../../public/images/Logo.png";
 import "./globals.css";
 
 const displayFont = localFont({
-  src: [
-    { path: "../../public/fonts/newsreader-variable.ttf", weight: "200 800", style: "normal" },
-    { path: "../../public/fonts/newsreader-italic-variable.ttf", weight: "200 800", style: "italic" },
-  ],
+  src: "../../public/fonts/newsreader-italic-variable.ttf",
+  weight: "200 800",
+  style: "italic",
   variable: "--font-display",
-  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Nish AI — Join the Waitlist",
-  description: "Autocomplete that speaks your team’s language. Join the Nish AI waitlist for launch and early access updates.",
+  title: "Nish AI",
+  description: "Autocomplete that speaks your team’s language.",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={displayFont.variable}>
-      <body className="min-h-screen antialiased m-0 p-0 bg-[#FAF8FC] text-black selection:bg-[#A3C6F0] selection:text-black">
-        <nav className="fixed top-4 left-1/2 z-50 w-[calc(100%-2rem)] max-w-4xl -translate-x-1/2 rounded-2xl border-2 border-black bg-white/90 backdrop-blur">
-          <div className="flex h-14 items-center justify-between pl-2 pr-2 sm:pl-3">
-            
-            <Link href="/" className="flex items-center group">
-              <div className="brand-logo h-12 w-12 transform group-hover:rotate-6 transition-transform">
-                <img 
-                  src={logo.src}
-                  alt="Nish AI Logo"
-                  className="brand-logo-image"
-                />
-              </div>
+      <body className="min-h-screen antialiased">
+        <header>
+          <nav className="grid h-16 grid-cols-[1fr_auto_1fr] items-center px-4 sm:px-6">
+            <Link href="/" className="justify-self-start">
+              <img src={logo.src} alt="Nish AI" className="h-10 w-10" />
             </Link>
-            
-            <div className="flex items-center gap-1 sm:gap-2 text-sm font-black uppercase tracking-tight">
-              <Link href="/about" className="hidden sm:block hover:bg-[#A3C6F0] px-3 py-1.5 rounded-lg border-2 border-transparent hover:border-black transition-all">About</Link>
-              <Link href="/services" className="hidden sm:block hover:bg-[#CEE58B] px-3 py-1.5 rounded-lg border-2 border-transparent hover:border-black transition-all">Services</Link>
-              <Link href="/contact" className="hidden sm:block hover:bg-[#EAB1CF] px-3 py-1.5 rounded-lg border-2 border-transparent hover:border-black transition-all">Contact</Link>
-            <Link href="/#waitlist" className="ml-1 rounded-xl border-2 border-black bg-[#F8C45B] px-3 py-2 text-xs">Join waitlist ↗</Link>
+            <div className="flex items-center gap-2 text-sm">
+              <Link href="/about" className="hidden rounded-md px-3 py-1.5 transition-colors hover:bg-black/5 sm:block">About</Link>
+              <Link href="/contact" className="hidden rounded-md px-3 py-1.5 transition-colors hover:bg-black/5 sm:block">Contact</Link>
+            </div>
+            <Link href="/#waitlist" className="justify-self-end rounded-md bg-purple-200 px-3 py-1.5 text-sm transition-colors hover:bg-purple-300">Join waitlist ↗</Link>
+          </nav>
+        </header>
+        {children}
+        <footer className="px-4 py-10 text-sm text-black/60 sm:px-6">
+          <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
+            <Link href="/" className="flex items-center gap-2 font-semibold text-black">
+              <img src={logo.src} alt="" className="h-6 w-6" />
+              Nish AI
+            </Link>
+            <div className="flex items-center gap-6">
+              <Link href="/privacy" className="hover:text-black">Privacy Policy</Link>
+              <Link href="/contact" className="hover:text-black">Contact</Link>
+              <span>© {new Date().getFullYear()} Nish AI</span>
             </div>
           </div>
-        </nav>
-
-        <div className="w-full pt-24">
-          {children}
-        </div>
+        </footer>
       </body>
     </html>
   );

@@ -1,190 +1,23 @@
-"use client";
-
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { team } from "@/lib/team";
 
 export default function About() {
-  const [hoveredMember, setHoveredMember] = useState<string | null>(null);
-  const [missingPhotos, setMissingPhotos] = useState<string[]>([]);
-
-  const team = [
-    { id: "lucas", name: "Lucas Lu", role: "CEO", src: "/images/Lucas.jpeg" },
-    { id: "ritwik", name: "Ritwik Singh", role: "CTO", src: "/images/Ritwik.jpg" },
-    { id: "rain", name: "Hongyi (Rain) Ren", role: "CMO", src: "/images/Rain.jpeg" },
-    { id: "allen", name: "Allen B. Hwang", role: "Principal Engineer", src: "/images/Allen.png" }
-  ];
-
   return (
-    <main className="min-h-screen w-full px-6 pb-20 overflow-hidden">
-      <div className="max-w-4xl mx-auto space-y-16">
-        
-        {/* Core Manifesto Box */}
-        <motion.section 
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ type: "spring", stiffness: 100 }}
-          whileHover={{ scale: 1.01 }}
-          className="border-4 border-black bg-white p-8 sm:p-12 brutal-shadow-lg relative"
-        >
-          <motion.h1 
-            initial={{ rotate: -5 }}
-            animate={{ rotate: -1 }}
-            className="font-display text-5xl font-medium uppercase tracking-tighter mb-6 bg-[#FFDA7B] inline-block px-3 border-2 border-black"
-          >
-            Our Mission
-          </motion.h1>
-          <div className="space-y-6 text-md font-bold text-zinc-900 leading-relaxed">
-            <p>
-              Nish AI operates with a focus on absolute privacy. We do not sell your data or compile your queries into central, external data matrices. Technical systems should run securely without constant external telemetry monitoring.
-            </p>
-            <p>
-              To generate suggestions, some processing may be handled by trusted third-party AI providers. Your specific workflow and writing remain your property, and we do not claim ownership of them.
-            </p>
+    <main className="px-4 pt-24 pb-24 text-center sm:pt-32">
+      <h1 className="text-4xl font-semibold tracking-tight sm:text-6xl">
+        Meet the <span className="font-display font-normal italic text-purple-500">team</span>
+      </h1>
+      <div className="mx-auto mt-12 grid max-w-5xl grid-cols-2 gap-6 sm:mt-16 lg:grid-cols-4">
+        {team.map((member) => (
+          <div key={member.id}>
+            <img
+              src={member.src}
+              alt={member.name}
+              className="aspect-square w-full rounded-2xl object-cover"
+            />
+            <p className="mt-4 font-semibold">{member.name}</p>
+            <p className="text-sm text-black/60">{member.role}</p>
           </div>
-        </motion.section>
-
-        {/* Team Grid */}
-        <section className="space-y-8">
-          <motion.h2 
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="text-3xl font-black uppercase tracking-tight bg-white border-2 border-black inline-block px-4 py-1 brutal-shadow"
-          >
-            Our Team
-          </motion.h2>
-
-          <div className="grid sm:grid-cols-2 gap-6">
-            {team.map((member, idx) => (
-              <motion.div 
-                key={member.id}
-                onMouseEnter={() => setHoveredMember(member.id)}
-                onMouseLeave={() => setHoveredMember(null)}
-                initial={{ opacity: 0, y: 50, rotate: idx % 2 === 0 ? -2 : 2 }}
-                animate={{ opacity: 1, y: 0, rotate: 0 }}
-                transition={{ delay: idx * 0.1, type: "spring" }}
-                whileHover={{ rotate: idx % 2 === 0 ? 3 : -3, scale: 1.03 }}
-                className="border-4 border-black bg-white p-6 brutal-shadow-interactive cursor-default relative"
-              >
-                {/* Image Container frame */}
-                <div className="aspect-square border-2 border-black bg-zinc-200 mb-4 flex items-center justify-center shadow-[3px_3px_0px_rgba(0,0,0,1)] overflow-hidden relative">
-                  {missingPhotos.includes(member.id) ? (
-                    <span role="img" aria-label={`${member.name} portrait placeholder`} className="text-6xl font-black text-zinc-500">
-                      {member.name.split(" ").map((part) => part[0]).join("")}
-                    </span>
-                  ) : (
-                    <img
-                      src={member.src}
-                      alt={member.name}
-                      className="w-full h-full object-cover"
-                      onError={() => setMissingPhotos((ids) => [...ids, member.id])}
-                    />
-                  )}
-
-                  {/* 1. Ritwik: Speech bubble pop-up overlay */}
-                  <AnimatePresence>
-                    {hoveredMember === "ritwik" && member.id === "ritwik" && (
-                      <motion.div 
-                        initial={{ scale: 0, y: 20 }}
-                        animate={{ scale: 1, y: 0 }}
-                        exit={{ scale: 0 }}
-                        transition={{ type: "spring", stiffness: 300, damping: 15 }}
-                        className="absolute bottom-4 left-4 right-4 bg-[#CEE58B] border-2 border-black p-2 text-center text-xs font-black uppercase tracking-wider shadow-[2px_2px_0px_rgba(0,0,0,1)] text-black z-20"
-                      >
-                        Baaaa! 🐑
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-
-                  {/* 2. Lucas: Burger gets eaten overlay */}
-                  <AnimatePresence>
-                    {hoveredMember === "lucas" && member.id === "lucas" && (
-                      <motion.div 
-                        initial={{ opacity: 0, scale: 0.5 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0 }}
-                        className="absolute inset-0 bg-[#F8C14F]/80 flex flex-col items-center justify-center z-20"
-                      >
-                        <motion.span 
-                          animate={{ 
-                            scale: [1, 1.3, 0.9, 1.1, 0],
-                            rotate: [0, 10, -10, 5, 0]
-                          }}
-                          transition={{ duration: 1.5, times: [0, 0.2, 0.5, 0.8, 1] }}
-                          className="text-6xl select-none"
-                        >
-                          🍔
-                        </motion.span>
-                        <motion.span
-                          initial={{ opacity: 0, scale: 0 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ delay: 0.9 }}
-                          className="text-4xl select-none font-black text-black uppercase tracking-tight"
-                        >
-                          CRUNCH!
-                        </motion.span>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-
-                  {/* Allen: Bouncing pig overlay */}
-                  <AnimatePresence>
-                    {hoveredMember === "allen" && member.id === "allen" && (
-                      <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        className="absolute inset-0 bg-[#E9B1DA]/80 flex flex-col items-center justify-center gap-4 pointer-events-none z-20"
-                      >
-                        <motion.span
-                          role="img"
-                          aria-label="Bouncing pig"
-                          animate={{ y: [0, -24, 0], rotate: [-8, 8, -8], scale: [1, 1.12, 1] }}
-                          transition={{ duration: 0.9, repeat: Infinity, ease: "easeInOut" }}
-                          className="text-7xl select-none"
-                        >
-                          🐷
-                        </motion.span>
-                        <motion.span
-                          initial={{ scale: 0 }}
-                          animate={{ scale: 1 }}
-                          transition={{ delay: 0.15, type: "spring", stiffness: 300 }}
-                          className="border-2 border-black bg-white px-4 py-2 text-xl font-black uppercase brutal-shadow"
-                        >
-                          Oink oink!
-                        </motion.span>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-
-                  {/* 3. Rain: Particle Rain drop falling effect overlay */}
-                  {hoveredMember === "rain" && member.id === "rain" && (
-                    <div className="absolute inset-0 bg-[#383879]/40 pointer-events-none z-20 flex justify-around overflow-hidden">
-                      {[...Array(6)].map((_, i) => (
-                        <motion.div 
-                          key={i}
-                          animate={{ y: [-20, 200] }}
-                          transition={{ 
-                            repeat: Infinity, 
-                            duration: 0.6 + Math.random() * 0.4, 
-                            delay: Math.random() * 0.3,
-                            ease: "linear" 
-                          }}
-                          className="w-0.5 h-6 bg-[#A3C6F0] rounded"
-                        />
-                      ))}
-                    </div>
-                  )}
-                </div>
-
-                <h3 className="font-black text-xl uppercase tracking-tighter text-black">{member.name}</h3>
-                <p className="text-xs font-black text-zinc-600 uppercase tracking-widest mt-1">
-                  Co-founder &amp; {member.role}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </section>
-
+        ))}
       </div>
     </main>
   );
